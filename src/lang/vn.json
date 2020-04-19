@@ -1,0 +1,32 @@
+{
+  "language": [
+    {
+      "name": "Tiếng Việt",
+      "icon": "vn_flag.jpg",
+      "value": "vn"
+    },
+    {
+      "name": "Tiếng Anh",
+      "icon": "en_flag.jpg",
+      "value": "en"
+    }
+  ],
+  "one_movie": "One Movie",
+  "tv_series": "Tv - Phim bộ",
+  "news": "Phim mới",
+  "Az_list": "Danh sách A - z",
+  "new": "Mới",
+  "featured_movies": "Phim Đặc Sắc",
+  "featured": "Đặc Sắc",
+  "top_viewed": "Lượt xem nhiều",
+  "top_rating": "Đánh giá cao",
+  "recently_added": "Thêm gần đây",
+  "date_of_release": "Ngày phát hành",
+  "genres": "Thể loại",
+  "country": "Quốc gia",
+  "actor": "Diễn viên",
+  "star_rating": "Đánh giá",
+  "story_line": "Nội dung",
+  "watch": "Xem phim",
+  "most-popular-movies": "Phim phổ biến nhất"
+}

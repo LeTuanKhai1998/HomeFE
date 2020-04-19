@@ -1,0 +1,32 @@
+{
+  "language": [
+    {
+      "name": "English",
+      "icon": "en_flag.jpg",
+      "value": "en"
+    },
+    {
+      "name": "VietNamese",
+      "icon": "vn_flag.jpg",
+      "value": "vn"
+    }
+  ],
+  "one_movie": "One Movie",
+  "tv_series": "Tv - Series",
+  "news": "News",
+  "Az_list": "A - z list",
+  "new": "New",
+  "featured_movies": "Featured Movies",
+  "featured": "Featured",
+  "top_viewed": "Top Viewed",
+  "top_rating": "Top Rating",
+  "recently_added": "Recently Added",
+  "date_of_release": "Date Of Release",
+  "genres": "Genres",
+  "country": "Country",
+  "actor": "Actor",
+  "star_rating": "Star Rating",
+  "story_line": "Story Line",
+  "watch": "Watch Movie",
+  "most-popular-movies": "Most Popular Movies"
+}

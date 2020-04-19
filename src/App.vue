@@ -1,32 +1,63 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <Header/>
+        <Nav/>
+        <SocialNav/>
+        <router-view :key="$route.path"/>
+        <Footer/>
     </div>
-    <router-view />
-  </div>
 </template>
+<script>
+    /* eslint-disable */
+    import Header from "./components/Header";
+    import Nav from "./components/Nav";
+    import Footer from "./components/Footer";
+    import $ from "jquery";
+    import "./plugins/js/move-top";
+    import SocialNav from "./components/SocialNav";
+
+    export default {
+        components: {
+            SocialNav,
+            Footer,
+            Nav,
+            Header
+        }, mounted() {
+            // here stars scrolling icon
+            addEventListener("load", function () {
+                setTimeout(hideURLbar, 0);
+            }, false);
+
+            function hideURLbar() {
+                window.scrollTo(0, 1);
+            }
+        }
+    }
+</script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+    /* eslint-disable */
 
-#nav {
-  padding: 30px;
-}
+    @import "./plugins/css/bootstrap.css";
+    @import "./plugins/css/style.css";
+    @import "./plugins/css/contactstyle.css";
+    @import "./plugins/css/faqstyle.css";
+    @import "./plugins/css/single.css";
+    @import "./plugins/css/medile.css";
+    /*banner-slider */
+    @import "./plugins/css/jquery.slidey.min.css";
+    /*//banner-slider*/
+    /*pop-up*/
+    @import "./plugins/css/popuo-box.css";
+    /*//pop-up*/
+    /*font-awesome icons*/
+    @import "./plugins/css/font-awesome.min.css";
+    /*//font-awesome icons*/
+    /*banner-bottom-plugin*/
+    @import "./plugins/css/owl.carousel.css";
+    /*//banner-bottom-plugin*/
+    @import "./plugins/news-css/news.css";
+    @import "./plugins/list-css/list.css";
+    @import "./plugins/css/flexslider.css";
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
