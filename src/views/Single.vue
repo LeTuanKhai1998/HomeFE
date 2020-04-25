@@ -123,7 +123,8 @@
                 if (!this.movie) {
                     HomeDataService.getMovieBySLug(this.slug)
                         .then(response => {
-                            this.movie = response.data.data;
+                            this.movie = response.data.data.data;
+                            console.log(this.movie.name)
                         });
                 }
             }

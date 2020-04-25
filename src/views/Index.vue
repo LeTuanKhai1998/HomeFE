@@ -36,7 +36,7 @@
                 //     });
                 HomeDataService.getMovies(APIPath.MOVIE.BannerBottom)
                     .then(response => {
-                        this.bannerBottom = response.data.data;
+                        this.bannerBottom = response.data.data.data;
                     });
             },
         }

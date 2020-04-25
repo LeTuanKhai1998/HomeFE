@@ -38,7 +38,7 @@
             prepation() {
                 HomeDataService.getMovies(APIPath.MOVIE.Banner)
                     .then(response => {
-                        this.data = response.data.data;
+                        this.data = response.data.data.data;
                     });
             }
 

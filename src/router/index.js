@@ -28,6 +28,13 @@ const router = new VueRouter({
                 import(/* webpackChunkName: "Single" */ "../views/WatchMovie.vue")
         },
         {
+            path: "/the-loai/:genreName",
+            name: "Genres",
+            props: true,
+            component: () =>
+                import(/* webpackChunkName: "Single" */ "../views/Genres.vue")
+        },
+        {
             path: "/faq",
             name: "Faq",
             props: true,
