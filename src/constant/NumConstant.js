@@ -1,3 +1,4 @@
 export default {
-    RATINGSTART: 5
+    RATINGSTART: 5,
+    MoviePerPage:5
 }

@@ -30,5 +30,23 @@
   "watch": "Watch Movie",
   "most-popular-movies": "Most Popular Movies",
   "movies": "Movies",
-  "movie_reviews": "Movie Reviews"
+  "movie_reviews": "Movie Reviews",
+  "one_logo": "One",
+  "movies_logo": "Movies",
+  "all_rights_reserved": " 2020 One Movies. All rights reserved",
+  "faq": "FAQ",
+  "contact_us": "Contact Us",
+  "your_email": "Your email...",
+  "send": "Send",
+  "search": "Search...",
+  "go_search": "Go",
+  "login": "Login",
+  "subscribe_to_us": "Subscribe to us",
+  "prev": "Prev",
+  "next": "Next",
+
+  "hanh-dong": "Action",
+  "khoa-hoc-vien-tuong": "Science fiction ",
+  "hai-huoc": "Comedy",
+  "phieu-luu": "Adventure"
 }

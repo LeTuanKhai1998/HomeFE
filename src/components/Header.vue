@@ -3,12 +3,12 @@
     <div class="header">
         <div class="container">
             <div class="w3layouts_logo">
-                <router-link :to="{name:'Home'}"><h1>One<span>Movies</span></h1></router-link>
+                <router-link :to="{name:'Home'}"><h1>{{$t('one_logo')}}<span>{{$t('movies_logo')}}</span></h1></router-link>
             </div>
             <div class="w3_search">
                 <form action="#" method="post">
-                    <input type="text" name="Search" placeholder="Search" required="">
-                    <input type="submit" value="Go">
+                    <input type="text" name="Search" :placeholder="$t('search')" required="">
+                    <input type="submit" :value="$t('go_search')">
                 </form>
             </div>
             <div class="w3l_sign_in_register">
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal">{{$t('login')}}</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -52,6 +52,7 @@
 
 <style scoped>
     .dropbtn {
+        margin-left: -20px;
         font-size: 16px;
         border: none;
         font-weight: bold;

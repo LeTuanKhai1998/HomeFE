@@ -28,7 +28,7 @@ const router = new VueRouter({
                 import(/* webpackChunkName: "Single" */ "../views/WatchMovie.vue")
         },
         {
-            path: "/the-loai/:genreName",
+            path: "/the-loai/:slug",
             name: "Genres",
             props: true,
             component: () =>
@@ -41,7 +41,16 @@ const router = new VueRouter({
             component: () =>
                 import(/* webpackChunkName: "Faq" */ "../views/Faq.vue")
         }
-    ]
+    ],
+    // eslint-disable-next-line no-unused-vars
+    scrollBehavior(to, from, savedPosition) {
+        // eslint-disable-next-line no-unused-vars
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ x: 0, y: 0 })
+            }, 500)
+        })
+    }
 });
 
 

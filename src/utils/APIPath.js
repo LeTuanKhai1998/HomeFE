@@ -9,7 +9,8 @@ const MOVIE = {
     Countrys: 'Countrys',
     Movies: 'Movies?type=',
     MovieBySlug: 'MovieBySlug?slug=',
-    MostPopularMovie: 'MostPopularMovie?number='
+    MostPopularMovie: 'MostPopularMovie?number=',
+    MovieByGenreSlug: 'MovieByGenreSlug',
 
 
 };

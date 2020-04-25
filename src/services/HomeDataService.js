@@ -12,6 +12,9 @@ class UsersDataService {
     getMovieBySLug(slug) {
         return axios.get(`${INSTRUCTOR_API_URL}/${APIPath.MOVIE.MovieBySlug}${slug}`);
     }
+    getMovieByGerneSLug(form) {
+        return axios.post(`${INSTRUCTOR_API_URL}/${APIPath.MOVIE.MovieByGenreSlug}`,form);
+    }
 
     getMovies(type) {
         return axios.get(`${INSTRUCTOR_API_URL}/${APIPath.MOVIE.Movies}${type}`);

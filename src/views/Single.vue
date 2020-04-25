@@ -33,7 +33,11 @@
                                         <p class="fexi_header_para">
                                             <span>{{$t('genres')}}<label>:</label> </span>
                                             <a href="genres.html" v-for="items in movie.genres" v-bind:key="items.id">
-                                                {{items.name}} |</a>
+                                                <router-link active-class="link"
+                                                             :to="{ name : 'Genres',  params: { slug: items.slug }}">
+                                                    {{items.name}}
+                                                </router-link>
+                                                |</a>
                                         </p>
                                         <p class="fexi_header_para"><span>{{$t('country')}}<label>:</label></span>
                                             {{movie.country.name}}</p>

@@ -24,35 +24,11 @@
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <li>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-4" v-for="genre in genres" :key="genre.id">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="genres.html">Action</a></li>
-                                                <li><a href="genres.html">Biography</a></li>
-                                                <li><a href="genres.html">Crime</a></li>
-                                                <li><a href="genres.html">Family</a></li>
-                                                <li><a href="horror.html">Horror</a></li>
-                                                <li><a href="genres.html">Romance</a></li>
-                                                <li><a href="genres.html">Sports</a></li>
-                                                <li><a href="genres.html">War</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a href="genres.html">Adventure</a></li>
-                                                <li><a href="comedy.html">Comedy</a></li>
-                                                <li><a href="genres.html">Documentary</a></li>
-                                                <li><a href="genres.html">Fantasy</a></li>
-                                                <li><a href="genres.html">Thriller</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a href="genres.html">Animation</a></li>
-                                                <li><a href="genres.html">Costume</a></li>
-                                                <li><a href="genres.html">Drama</a></li>
-                                                <li><a href="genres.html">History</a></li>
-                                                <li><a href="genres.html">Musical</a></li>
-                                                <li><a href="genres.html">Psychological</a></li>
+                                                <li v-for="item in genre" :key="item.id">
+                                                    <router-link active-class="link" :to="{ name : 'Genres',  params: { slug: item.slug }}">{{item.name}}</router-link>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -66,28 +42,11 @@
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <li>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-4" v-for="country in countrys" :key="country.id">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="genres.html">Asia</a></li>
-                                                <li><a href="genres.html">France</a></li>
-                                                <li><a href="genres.html">Taiwan</a></li>
-                                                <li><a href="genres.html">United States</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a href="genres.html">China</a></li>
-                                                <li><a href="genres.html">HongCong</a></li>
-                                                <li><a href="genres.html">Japan</a></li>
-                                                <li><a href="genres.html">Thailand</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a href="genres.html">Euro</a></li>
-                                                <li><a href="genres.html">India</a></li>
-                                                <li><a href="genres.html">Korea</a></li>
-                                                <li><a href="genres.html">United Kingdom</a></li>
+                                                <li v-for="item in country" :key="item.id">
+                                                    <router-link active-class="link" :to="{ name : 'Genres',  params: { slug: item.name }}">{{item.name}}</router-link>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -106,25 +65,51 @@
 
 <script>
     import $ from "jquery";
+    import HomeDataService from "../services/HomeDataService";
+    import APIPath from "../utils/APIPath";
 
     export default {
         name: "Nav",
-        mounted() {
-            $(document).ready(function () {
-                $(".dropdown").hover(
-                    function () {
-                        $('.dropdown-menu', this).stop(true, true).slideDown("fast");
-                        $(this).toggleClass('open');
-                    },
-                    function () {
-                        $('.dropdown-menu', this).stop(true, true).slideUp("fast");
-                        $(this).toggleClass('open');
-                    }
-                );
-            });
+        data() {
+            return {
+                genres: null,
+                countrys:null
+            }
+        },
+        created() {
+            this.prepation()
+        },
+        watch: {
+            genres: function (value) {
+                if (value || this.countrys ) {
+                    $(".dropdown").hover(
+                        function () {
+                            $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                            $(this).toggleClass('open');
+                        },
+                        function () {
+                            $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                            $(this).toggleClass('open');
+                        }
+                    );
+                }
+            }
+        },
+        methods: {
+            prepation() {
+                HomeDataService.getGenres(APIPath.MOVIE.Genres)
+                    .then(response => {
+                        this.genres = response.data.data.data;
+                    });
+                HomeDataService.getCountrys(APIPath.MOVIE.Countrys)
+                .then(respose =>{
+                    this.countrys = respose.data.data.data;
+                });
+            }
         }
     }
 </script>
 
 <style scoped>
+
 </style>

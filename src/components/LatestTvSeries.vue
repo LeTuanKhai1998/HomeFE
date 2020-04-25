@@ -31,7 +31,10 @@
                                             <span>{{$t('genres')}}<label>:</label> </span>
                                             <a href="genres.html" v-for="itemGenres in item[0].genres"
                                                v-bind:key="itemGenres.id">
-                                                {{itemGenres.name}} |</a>
+                                                <router-link active-class="link" :to="{ name : 'Genres',  params: { slug: itemGenres.slug }}">
+                                                    {{itemGenres.name}}
+                                                </router-link>
+                                                |</a>
                                         </p>
                                         <p class="fexi_header_para fexi_header_para1">
                                             <span>{{$t('star_rating')}} ({{item[0].num_rate}})<label>:</label></span>
@@ -93,7 +96,6 @@
                 HomeDataService.getMostPopularMovie(this.numberItem)
                     .then(response => {
                         this.data = response.data.data.data;
-                        console.log("data", this.data)
                     });
             }
 

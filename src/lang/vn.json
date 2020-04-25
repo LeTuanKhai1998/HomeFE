@@ -30,5 +30,24 @@
   "watch": "Xem phim",
   "most-popular-movies": "Phim phổ biến nhất",
   "movies": "Phim",
-  "movie_reviews": "Phim được đánh giá cao"
+  "movie_reviews": "Phim được đánh giá cao",
+  "one_logo": "One",
+  "movies_logo": "Movies",
+  "all_rights_reserved": " 2020 One Movies. Đã đăng ký bản quyền",
+  "faq": "FAQ",
+  "contact_us": "Liên hệ với chúng tôi",
+  "your_email": "Email của bạn...",
+  "send": "Gửi",
+  "search": "Tìm kiếm...",
+  "go_search": "Tìm",
+  "login": "Đăng nhập",
+
+  "subscribe_to_us": "Đăng ký với chúng tôi",
+  "prev": "Trước",
+  "next": "Sau",
+
+  "hanh-dong": "Hành động",
+  "khoa-hoc-vien-tuong": "Khoa học viễn tưởng",
+  "hai-huoc": "Hài hước",
+  "phieu-luu": "Phiêu lưu"
 }
