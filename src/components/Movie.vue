@@ -40,7 +40,7 @@
         },
         methods: {
             getImgUrl(val) {
-                return getUrl.getImgUrl(val)
+                return getUrl.getImgUrl(val,1)
             },
         }
     }

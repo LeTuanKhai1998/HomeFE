@@ -32,7 +32,7 @@
                                         </p>
                                         <p class="fexi_header_para">
                                             <span>{{$t('genres')}}<label>:</label> </span>
-                                            <a href="genres.html" v-for="items in movie.genres" v-bind:key="items.id">
+                                            <a href="genres.html" v-for="items in movie.genres" v-bind:key="items.slug">
                                                 <router-link active-class="link"
                                                              :to="{ name : 'Genres',  params: { slug: items.slug }}">
                                                     {{items.name}}
@@ -42,7 +42,7 @@
                                         <p class="fexi_header_para"><span>{{$t('country')}}<label>:</label></span>
                                             {{movie.country.name}}</p>
                                         <p class="fexi_header_para"><span>{{$t('actor')}}<label>:</label></span>
-                                            <a href="genres.html" v-for="items in movie.actors" v-bind:key="items.id">
+                                            <a href="genres.html" v-for="items in movie.actors" v-bind:key="items.slug">
                                                 {{items.name}} |</a>
                                             <br v-if="movie.actors"/>
                                         </p>
@@ -53,8 +53,7 @@
                                         <div class="fexi_header" style="margin-top: 40%">
                                             <div class="text-center">
                                                 <a class="btn btn-red"
-                                                   style="color: white;font-weight: bold;font-size: larger"
-                                                   @click="gotoPlay">{{$t('watch')}}</a>
+                                                   style="color: white;font-weight: bold;font-size: larger">{{$t('watch')}}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +66,7 @@
                             <SocialShare/>
                         </div>
                         <div class="clearfix"></div>
-                        <Comments/>
+                        <Comments v-if="movie" :movie_id="movie.id" />
                     </div>
                     <div class="col-md-4 single-right">
                         <UpNext/>
@@ -121,14 +120,13 @@
         },
         methods: {
             getImgUrl(val) {
-                return getUrl.getImgUrl(val)
+                return getUrl.getImgUrl(val,1)
             },
             getMovieBySlug() {
                 if (!this.movie) {
                     HomeDataService.getMovieBySLug(this.slug)
                         .then(response => {
                             this.movie = response.data.data.data;
-                            console.log(this.movie.name)
                         });
                 }
             }

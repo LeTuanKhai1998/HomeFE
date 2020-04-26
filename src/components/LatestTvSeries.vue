@@ -90,7 +90,7 @@
         },
         methods: {
             getImgUrl(val) {
-                return getUrl.getImgUrl(val)
+                return getUrl.getImgUrl(val,1)
             },
             prepation() {
                 HomeDataService.getMostPopularMovie(this.numberItem)

@@ -3,6 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import i18n from "./lang/i18n";
 import store from './store'
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-default.css';
+
 
 import jQuery from 'jquery'
 global.jQuery = jQuery
@@ -25,6 +28,7 @@ import './plugins/js/bootstrap.min'
 import './plugins/js/simplePlayer'
 
 
+Vue.use(VueToast);
 
 Vue.config.productionTip = false;
 

@@ -11,6 +11,8 @@ const MOVIE = {
     MovieBySlug: 'MovieBySlug?slug=',
     MostPopularMovie: 'MostPopularMovie?number=',
     MovieByGenreSlug: 'MovieByGenreSlug',
+    CommentByMovieId: 'CommentByMovieId',
+    PostComment:"PostComment"
 
 
 };
