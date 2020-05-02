@@ -14,7 +14,7 @@
                 </h6>
             </div>
             <div class="mid-2 agile_mid_2_home">
-                <p>2016</p>
+                <p>{{movie.release_year}}</p>
                 <div class="block-stars">
                     <StarRating :rate="movie.rate"/>
                 </div>

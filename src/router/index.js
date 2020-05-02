@@ -35,6 +35,20 @@ const router = new VueRouter({
                 import(/* webpackChunkName: "Single" */ "../views/Genres.vue")
         },
         {
+            path: "/tim-kiem/:keyword",
+            name: "Search",
+            props: true,
+            component: () =>
+                import(/* webpackChunkName: "Single" */ "../views/Search.vue")
+        },
+        {
+            path: "/loc-phim/:sort_filter/:year/:country/:genre",
+            name: "SearchFilter",
+            props: true,
+            component: () =>
+                import(/* webpackChunkName: "Single" */ "../views/Search.vue")
+        },
+        {
             path: "/faq",
             name: "Faq",
             props: true,

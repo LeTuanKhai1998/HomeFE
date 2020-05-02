@@ -15,11 +15,17 @@ export default {
     Top_Rating: "Đánh giá cao",
     Recently_Added: "Thêm gần đây",
     Successful: "Successful",
-    Fail:"Fail",
-    TypeToastSuccess:'success',
-    TypeToastWarning:'warning',
-    TypeToastError:'error',
-    TypeToastInfo:'info',
-    TypeToastDefault:'default'
+    Fail: "Fail",
+    TypeToastSuccess: 'success',
+    TypeToastWarning: 'warning',
+    TypeToastError: 'error',
+    TypeToastInfo: 'info',
+    TypeToastDefault: 'default',
+    TopToast: 'top',
+    BottomToast: 'bottom',
+    TopRightToast:'top-right',
+    TopLeftToast:'top-left',
+    BottomRightToast:'bottom-right',
+    BottomLeftToast:'bottom-left',
 
 }

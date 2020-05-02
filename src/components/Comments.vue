@@ -64,7 +64,7 @@
                 formToast: {
                     message: '',
                     type: '',
-                    position: 'bottom',
+                    position: StringConstant.BottomToast,
                 },
             }
         },
