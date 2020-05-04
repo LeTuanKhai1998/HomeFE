@@ -194,4 +194,7 @@
     .pagination a:hover {
         cursor: pointer;
     }
+.dropdown{
+    width: 10.11rem !important;
+}
 </style>

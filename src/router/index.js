@@ -21,7 +21,7 @@ const router = new VueRouter({
                 import(/* webpackChunkName: "Single" */ "../views/Single.vue")
         },
         {
-            path: "/xem-phim",
+            path: "/xem-phim/:slug",
             name: "Watch Movie",
             props: true,
             component: () =>

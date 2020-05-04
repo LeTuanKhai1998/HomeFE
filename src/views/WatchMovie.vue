@@ -1,33 +1,34 @@
 <template>
     <!-- single -->
     <div class="single-page-agile-main">
+             <div class="box-player">
+                    <div class="player" >
+                        <video controls class="player">
+                            <source src="http://webcoban.vn/file/bunny.mp4">
+                        </video>
+                    </div>
+                </div>
         <div class="container">
-            <div class="agileits-single-top">
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Tên phim</li>
-                </ol>
-            </div>
             <!-- /w3l-medile-movies-grids -->
             <div class="single-page-agile-info">
                 <!-- /movie-browse-agile -->
+           
+
                 <div class="show-top-grids-w3lagile">
                     <div class="col-sm-8 single-left">
-                        <div class="song">
-                            <!-- <div class="song-info">
+                        <!-- <div class="song-info">
                                 <h3>movie name</h3>
                             </div> -->
-                            <div class="video-grid-single-page-agileits">
-                                <div data-video="dLmKio67pVQ" id="video"> <img src="images/5.jpg" alt="" class="img-responsive">
-                                    <div id="play" style=""></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="song-grid-right">
+                        <!-- <div class="video-grid-single-page-agileits">
+                                    <video controls>
+                                          <source src="http://webcoban.vn/file/bunny.mp4">
+                                  </video>
+                            </div> -->
+                        <!-- <div class="song-grid-right">
                             <SocialShare/>
-                        </div>
+                        </div> -->
                         <div class="clearfix"></div>
-                          <div class="song-grid-right">
+                        <div class="song-grid-right">
                             <div class="share">
                                 <h5>Ten phim</h5>
                                 <div class="single-agile-shar-buttons">
@@ -36,17 +37,19 @@
                             </div>
                         </div>
                         <Comments/>
-                        <General/>
+                        <!-- <General/> -->
+                        <!-- <LatestTvSeries/> -->
+                        <ListSeriesFilm/>
                     </div>
-                    <div class="col-md-4 single-right">
+                    <!-- <div class="col-md-4 single-right">
                         <UpNext/>
-                    </div>
+                    </div> -->
                     <div class="clearfix"></div>
                 </div>
                 <!-- //movie-browse-agile -->
 
                 <!--body wrapper start-->
-                
+
                 <!--body wrapper end-->
 
             </div>
@@ -56,14 +59,18 @@
     <!-- //w3l-medile-movies-grids -->
 </template>
 <script>
+    // import LatestTvSeries from "../components/LatestTvSeries";
+    import ListSeriesFilm from "../components/ListSeriesFilm";
     import Comments from "../components/Comments";
-    import UpNext from "../components/UpNext";
-    import General from "../components/General";
+    // import UpNext from "../components/UpNext";
+    // import General from "../components/General";
     export default {
         components: {
             Comments,
-            UpNext,
-            General
+            // UpNext,
+            // General,
+            ListSeriesFilm
+            // LatestTvSeries
         }
     }
 </script>
@@ -93,4 +100,26 @@
         float: right;
         width: 28%;
     }
+    .box-player {
+    background-color: #1a1a1a;
+    padding: 20px 0;
+    position: relative;
+}
+.player {
+    margin: 0 auto;
+    width: 854px;
+    line-height: 1;
+    z-index: 2;
+}
+.w3l-agile-horror, .general-agileits-w3l, .single-page-agile-main, .wthree-comedy {
+    padding: 0;
+    
+}
+/* .navbar-default .navbar-nav > .active > a{
+      background-color: #FF8D1B !important;
+} */
+/* .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #FF8D1B;
+} */
 </style>

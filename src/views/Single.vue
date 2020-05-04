@@ -52,8 +52,10 @@
                                         </p>
                                         <div class="fexi_header" style="margin-top: 40%">
                                             <div class="text-center">
-                                                <a class="btn btn-red"
-                                                   style="color: white;font-weight: bold;font-size: larger">{{$t('watch')}}</a>
+                                                <!-- <a class="btn btn-red"
+                                                   style="color: white;font-weight: bold;font-size: larger"></a> -->
+                                                   <router-link class="btn btn-red"
+                                                   style="color: white;font-weight: bold;font-size: larger" :to="{ name : 'Watch Movie'}">{{$t('watch')}}</router-link>
                                             </div>
                                         </div>
                                     </div>
