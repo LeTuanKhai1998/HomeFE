@@ -67,7 +67,7 @@
                 </nav>
             </div>
         </div>
-        <FilterMovie :genres="genres" :country="countrys" />
+        <!-- <FilterMovie :genres="genres" :country="countrys" /> -->
         <!-- //nav -->
     </div>
 </template>
@@ -76,11 +76,11 @@
     import $ from "jquery";
     import HomeDataService from "../services/HomeDataService";
     import APIPath from "../utils/APIPath";
-    import FilterMovie from "./FilterMovie";
+    // import FilterMovie from "./FilterMovie";
 
     export default {
         name: "Nav",
-        components: {FilterMovie},
+        // components: {FilterMovie},
         data() {
             return {
                 genres: null,
