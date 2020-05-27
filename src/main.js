@@ -5,6 +5,14 @@ import i18n from "./lang/i18n";
 import store from './store'
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-default.css';
+import VueLazyload from 'vue-lazyload'
+import VueVideoPlayer from 'vue-video-player'
+import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
+import TextareaAutosize from 'vue-textarea-autosize'
+import VModal from 'vue-js-modal'
+
+
 
 
 import jQuery from 'jquery'
@@ -31,6 +39,19 @@ import './plugins/js/simplePlayer'
 Vue.use(VueToast);
 
 Vue.config.productionTip = false;
+
+Vue.use(VueVideoPlayer)
+
+Vue.use(TextareaAutosize)
+
+Vue.use(VModal)
+
+Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    error: 'https://www.teknozeka.com/wp-content/uploads/2020/03/wp-header-logo-21.png',
+    loading: 'https://i.pinimg.com/originals/a2/de/bf/a2debfb85547f48c3a699423ba75f321.gif',
+    attempt: 1
+})
 
 new Vue({
     router,

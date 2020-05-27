@@ -19,7 +19,7 @@
                 <div class="media-left">
                     <a href="#">
                         <!--                        <img src="../plugins/images/user.jpg" title="One movies" alt=" "/>-->
-                        <img style="max-height: 64px;max-width: 64px" :src="getImgUrl(item.avatar.url)"
+                        <img style="max-height: 64px;max-width: 64px" v-lazy="getImgUrl(item.avatar.url)"
                              :title="item.user_name" :alt="item.avatar.alt"/>
                     </a>
                 </div>

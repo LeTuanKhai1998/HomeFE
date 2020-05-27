@@ -14,7 +14,8 @@
                                         <div class="w3ls_market_video_grid1">
                                             <img :src="getImgUrl(item[0].banner.url)" :alt="item[0].banner.alt"
                                                  class="img-responsive cropped"/>
-                                            <a class="w3_play_icon" href="#small-dialog">
+                                            <a class="w3_play_icon" @click.prevent="onOpenTrailer(item[0])"
+                                               href="#small-dialog">
                                                 <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
                                             </a>
                                         </div>
@@ -31,7 +32,8 @@
                                             <span>{{$t('genres')}}<label>:</label> </span>
                                             <a href="genres.html" v-for="itemGenres in item[0].genres"
                                                v-bind:key="itemGenres.id">
-                                                <router-link active-class="link" :to="{ name : 'Genres',  params: { slug: itemGenres.slug }}">
+                                                <router-link active-class="link"
+                                                             :to="{ name : 'Genres',  params: { slug: itemGenres.slug }}">
                                                     {{itemGenres.name}}
                                                 </router-link>
                                                 |</a>
@@ -56,14 +58,8 @@
                 </section>
             </div>
         </div>
-        <div id="small-dialog" class="mfp-hide">
-            <iframe src="https://www.youtube.com/embed/JOAWOLaxcCA"></iframe>
-        </div>
-        <div id="small-dialog1" class="mfp-hide">
-            <iframe src="https://www.youtube.com/embed/JOAWOLaxcCA"></iframe>
-        </div>
-        <div id="small-dialog2" class="mfp-hide">
-            <iframe src="https://www.youtube.com/embed/JOAWOLaxcCA"></iframe>
+        <div id="small-dialog" class="mfp-hide" v-if="selectItem">
+            <iframe :src="selectItem.trailers[0].url"></iframe>
         </div>
         <!-- //Latest-tv-series -->
     </div>
@@ -81,6 +77,7 @@
         components: {Movie, StarRating},
         data() {
             return {
+                selectItem: null,
                 data: null,
                 numberItem: 18,
             }
@@ -89,8 +86,11 @@
             this.prepation();
         },
         methods: {
+            onOpenTrailer(event) {
+                this.selectItem = event;
+            },
             getImgUrl(val) {
-                return getUrl.getImgUrl(val,1)
+                return getUrl.getImgUrl(val, 1)
             },
             prepation() {
                 HomeDataService.getMostPopularMovie(this.numberItem)
