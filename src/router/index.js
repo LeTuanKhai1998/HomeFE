@@ -21,13 +21,50 @@ const router = new VueRouter({
                 import(/* webpackChunkName: "Single" */ "../views/Single.vue")
         },
         {
+            path: "/xem-phim/:slug",
+            name: "WatchMovie",
+            props: true,
+            component: () =>
+                import(/* webpackChunkName: "Single" */ "../views/WatchMovie.vue")
+        },
+        {
+            path: "/the-loai/:slug",
+            name: "Genres",
+            props: true,
+            component: () =>
+                import(/* webpackChunkName: "Single" */ "../views/Genres.vue")
+        },
+        {
+            path: "/tim-kiem/:keyword",
+            name: "Search",
+            props: true,
+            component: () =>
+                import(/* webpackChunkName: "Single" */ "../views/Search.vue")
+        },
+        {
+            path: "/loc-phim/:sort_filter/:year/:country/:genre",
+            name: "SearchFilter",
+            props: true,
+            component: () =>
+                import(/* webpackChunkName: "Single" */ "../views/Search.vue")
+        },
+        {
             path: "/faq",
             name: "Faq",
             props: true,
             component: () =>
                 import(/* webpackChunkName: "Faq" */ "../views/Faq.vue")
         }
-    ]
+    ],
+    // eslint-disable-next-line no-unused-vars
+    scrollBehavior(to, from, savedPosition) {
+        // eslint-disable-next-line no-unused-vars
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ x: 0, y: 0 })
+            }, 500)
+        })
+    }
 });
 
 

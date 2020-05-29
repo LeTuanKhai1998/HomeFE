@@ -2,7 +2,7 @@
     <div v-if="movie">
         <router-link active-class="link" :to="{ name : 'Single',  params: { slug: movie.slug }}"
                      class="hvr-shutter-out-horizontal">
-            <img :src="getImgUrl(movie.image.url)" title="album-name" class="img-responsive"
+            <img v-lazy="getImgUrl(movie.image.url)" title="album-name" class="img-responsive"
                  :alt="movie.image.alt"/>
             <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i>
             </div>
@@ -14,7 +14,7 @@
                 </h6>
             </div>
             <div class="mid-2 agile_mid_2_home">
-                <p>2016</p>
+                <p>{{movie.release_year}}</p>
                 <div class="block-stars">
                     <StarRating :rate="movie.rate"/>
                 </div>
@@ -40,7 +40,7 @@
         },
         methods: {
             getImgUrl(val) {
-                return getUrl.getImgUrl(val)
+                return getUrl.getImgUrl(val,1)
             },
         }
     }

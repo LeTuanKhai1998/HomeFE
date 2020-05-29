@@ -33,12 +33,12 @@
         },
         methods: {
             getImgUrl(val) {
-                return getUrl.getImgUrl(val)
+                return getUrl.getImgUrl(val,1)
             },
             prepation() {
                 HomeDataService.getMovies(APIPath.MOVIE.Banner)
                     .then(response => {
-                        this.data = response.data.data;
+                        this.data = response.data.data.data;
                     });
             }
 

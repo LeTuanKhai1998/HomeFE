@@ -87,25 +87,25 @@
                 if (!this.featuredData) {
                     HomeDataService.getMovies(APIPath.MOVIE.Featured)
                         .then(response => {
-                            this.featuredData = response.data.data;
+                            this.featuredData = response.data.data.data;
                         });
                 }
                 if (!this.topViewedData) {
                     HomeDataService.getMovies(APIPath.MOVIE.TopViewed)
                         .then(response => {
-                            this.topViewedData = response.data.data;
+                            this.topViewedData = response.data.data.data;
                         });
                 }
                 if (!this.topRatingData) {
                     HomeDataService.getMovies(APIPath.MOVIE.TopRating)
                         .then(response => {
-                            this.topRatingData = response.data.data;
+                            this.topRatingData = response.data.data.data;
                         });
                 }
                 if (!this.recentlyAddedData) {
                     HomeDataService.getMovies(APIPath.MOVIE.RecentlyAdded)
                         .then(response => {
-                            this.recentlyAddedData = response.data.data;
+                            this.recentlyAddedData = response.data.data.data;
                         });
                 }
             },

@@ -18,9 +18,9 @@
                                     <div class="col-md-6 agile_tv_series_grid_left">
                                         <div class="w3ls_market_video_grid1">
                                             <!--                                            <img style="min-height:312px" src="images/h1-1.jpg" alt=" " class="img-responsive"/>-->
-                                            <img style="min-height:490px;" :src="getImgUrl(movie.image.url)" alt=" "
+                                            <img style="min-height:490px;" v-lazy="getImgUrl(movie.image.url)" alt=" "
                                                  class="img-responsive"/>
-                                            <a class="w3_play_icon" href="#small-dialog" style="margin: auto">
+                                            <a class="w3_play_icon" @click.prevent="show" href="#small-dialog" style="margin: auto">
                                                 <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
                                             </a>
                                         </div>
@@ -32,13 +32,17 @@
                                         </p>
                                         <p class="fexi_header_para">
                                             <span>{{$t('genres')}}<label>:</label> </span>
-                                            <a href="genres.html" v-for="items in movie.genres" v-bind:key="items.id">
-                                                {{items.name}} |</a>
+                                            <a href="genres.html" v-for="items in movie.genres" v-bind:key="items.slug">
+                                                <router-link active-class="link"
+                                                             :to="{ name : 'Genres',  params: { slug: items.slug }}">
+                                                    {{items.name}}
+                                                </router-link>
+                                                |</a>
                                         </p>
                                         <p class="fexi_header_para"><span>{{$t('country')}}<label>:</label></span>
                                             {{movie.country.name}}</p>
                                         <p class="fexi_header_para"><span>{{$t('actor')}}<label>:</label></span>
-                                            <a href="genres.html" v-for="items in movie.actors" v-bind:key="items.id">
+                                            <a href="genres.html" v-for="items in movie.actors" v-bind:key="items.slug">
                                                 {{items.name}} |</a>
                                             <br v-if="movie.actors"/>
                                         </p>
@@ -48,9 +52,12 @@
                                         </p>
                                         <div class="fexi_header" style="margin-top: 40%">
                                             <div class="text-center">
-                                                <a class="btn btn-red"
-                                                   style="color: white;font-weight: bold;font-size: larger"
-                                                   @click="gotoPlay">{{$t('watch')}}</a>
+                                                <!-- <a class="btn btn-red"
+                                                   style="color: white;font-weight: bold;font-size: larger"></a> -->
+                                                <router-link class="btn btn-red"
+                                                             style="color: white;font-weight: bold;font-size: larger"
+                                                             :to="{ name : 'WatchMovie', params: { slug: movie.slug }}">{{$t('watch')}}
+                                                </router-link>
                                             </div>
                                         </div>
                                     </div>
@@ -59,26 +66,37 @@
                                 </div>
                             </div>
                         </div>
+                        <div style="margin-top: 20px;">
+                            <h2>{{$t('synopsis-of-the-film-content')}}</h2>
+                            <form v-if="movie">
+                                <textarea-autosize
+                                        style="min-width: 100%;padding: 10px;font-size: medium;margin-top: 10px"
+                                        placeholder="Type something here..."
+                                        ref="myTextarea"
+                                        v-model="movie.description"
+                                        :min-height="30"
+                                        :max-height="350"
+                                />
+<!--                                <textarea style="min-width: 500px"  v-model="movie.description" ></textarea>-->
+                            </form>
+                        </div>
                         <div class="song-grid-right">
                             <SocialShare/>
                         </div>
                         <div class="clearfix"></div>
-                        <Comments/>
+                        <Comments v-if="movie" :movie_id="movie.id"/>
                     </div>
                     <div class="col-md-4 single-right">
                         <UpNext/>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <!-- //movie-browse-agile -->
-
-                <!--body wrapper start-->
                 <BannerBottom/>
-                <!--body wrapper end-->
-
             </div>
-            <!-- //w3l-latest-movies-grids -->
         </div>
+        <modal name="trailer" :adaptive="true" width="70%" height="70%" >
+            <iframe style="width: 100%;height: 100%" :src="movie.trailers[0].url"></iframe>
+        </modal>
     </div>
     <!-- //w3l-medile-movies-grids -->
 </template>
@@ -95,7 +113,7 @@
 
     export default {
         name: "Single",
-        components: {StarRating, BannerBottom, UpNext, Comments, SocialShare, PathViews},
+        components: { StarRating, BannerBottom, UpNext, Comments, SocialShare, PathViews},
         props: {
             slug: {
                 type: String,
@@ -116,14 +134,20 @@
             }]
         },
         methods: {
+            show () {
+                this.$modal.show('trailer');
+            },
+            hide () {
+                this.$modal.hide('trailer');
+            },
             getImgUrl(val) {
-                return getUrl.getImgUrl(val)
+                return getUrl.getImgUrl(val, 1)
             },
             getMovieBySlug() {
                 if (!this.movie) {
                     HomeDataService.getMovieBySLug(this.slug)
                         .then(response => {
-                            this.movie = response.data.data;
+                            this.movie = response.data.data.data;
                         });
                 }
             }

@@ -3,12 +3,14 @@
     <div class="header">
         <div class="container">
             <div class="w3layouts_logo">
-                <router-link :to="{name:'Home'}"><h1>One<span>Movies</span></h1></router-link>
+                <router-link :to="{name:'Home'}"><h1>{{$t('one_logo')}}<span>{{$t('movies_logo')}}</span></h1>
+                </router-link>
             </div>
             <div class="w3_search">
                 <form action="#" method="post">
-                    <input type="text" name="Search" placeholder="Search" required="">
-                    <input type="submit" value="Go">
+                    <input type="text" name="Search" v-model="keyword" :placeholder="$t('enter_name_search')"
+                           required="">
+                    <input type="submit" @click.prevent="gotoSearch" :value="$t('go_search')">
                 </form>
             </div>
             <div class="w3l_sign_in_register">
@@ -21,13 +23,13 @@
                             <div class="dropdown-content">
                                 <a v-for="lang in $t('language')" v-bind:key="lang.value"
                                    @click.prevent="callSetLangActions(lang)" :title="lang.name">
-                                    <img  :src="require(`@/assets/${lang.icon}`)">
+                                    <img :src="require(`@/assets/${lang.icon}`)">
                                     {{lang.name }}
                                 </a>
                             </div>
                         </div>
                     </li>
-                    <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal">{{$t('login')}}</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -38,10 +40,37 @@
 
 <script>
     import i18n from "../lang/i18n";
+    import StringConstant from "../constant/StringConstant";
 
     export default {
         name: "Header",
+        data() {
+            return {
+                keyword: "",
+                formToast: {
+                    message: '',
+                    type: '',
+                    position: 'bottom',
+                },
+            }
+        },
         methods: {
+            showToast() {
+                this.$toast.open(this.formToast)
+            },
+            setDataToast(message, type,position) {
+                this.formToast.message = message
+                this.formToast.type = type
+                this.formToast.position = position
+            },
+            gotoSearch() {
+                if (!this.keyword) {
+                    this.setDataToast(this.$t('please_enter_a_keyword'), StringConstant.TypeToastError,StringConstant.TopToast);
+                    this.showToast();
+                } else {
+                    this.$router.push({name: 'Search', params: {keyword: this.keyword}});
+                }
+            },
             callSetLangActions(lang) {
                 i18n.locale = lang.value;
                 i18n.fallbackLocale = lang.value;
@@ -52,6 +81,7 @@
 
 <style scoped>
     .dropbtn {
+        margin-left: -20px;
         font-size: 16px;
         border: none;
         font-weight: bold;
@@ -86,7 +116,8 @@
         text-decoration: none;
         display: block;
     }
-    .dropdown-content img{
+
+    .dropdown-content img {
         max-height: 22px;
         overflow: auto;
 
